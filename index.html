@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SignKrox | Linux Enwefah Portfolio</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
     :root {
       --bg-light: #f8f9fc;
       --text-light: #1a1a1a;
@@ -13,6 +15,7 @@
       --text-dark: #e6edf3;
       --card-dark: #161b22;
       --accent: #3b82f6;
+      --accent2: #9333ea;
     }
 
     body {
@@ -20,7 +23,7 @@
       font-family: "Poppins", sans-serif;
       background-color: var(--bg-light);
       color: var(--text-light);
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
     }
 
     body.dark {
@@ -28,27 +31,129 @@
       color: var(--text-dark);
     }
 
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 40px 20px;
+    header {
+      background: linear-gradient(to right, var(--accent), var(--accent2));
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+      background-image: url("https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1920&q=80");
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    header::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.55);
+    }
+
+    header * {
+      position: relative;
+      z-index: 2;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #ddd;
+    }
+
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      z-index: 10;
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
       text-align: center;
     }
 
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
+    .section h2 {
+      font-size: 1.9rem;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
-    p {
-      font-size: 1rem;
+    .about p {
+      font-size: 1.05rem;
+      line-height: 1.7;
       color: gray;
-      margin-bottom: 40px;
+      max-width: 800px;
+      margin: auto;
     }
 
-    .links {
+    .card-grid {
       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .card {
+      border-radius: 14px;
+      overflow: hidden;
+      background: var(--card-light);
+      border: 1px solid #e5e7eb;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+
+    body.dark .card {
+      background: var(--card-dark);
+      border-color: #30363d;
+      box-shadow: 0 5px 15px rgba(255,255,255,0.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 15px;
+      text-align: left;
+    }
+
+    .card-content h3 {
+      margin: 8px 0 5px;
+      font-size: 1.1rem;
+    }
+
+    .card-content p {
+      color: gray;
+      font-size: 0.95rem;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .social-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 15px;
+      margin-top: 20px;
     }
 
     a.social {
@@ -78,30 +183,11 @@
       transform: scale(1.02);
     }
 
-    footer {
-      margin-top: 50px;
-      font-size: 0.9rem;
-      color: gray;
-    }
-
-    .theme-toggle {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background: var(--accent);
-      color: white;
-      border: none;
-      padding: 8px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.9rem;
-    }
-
     .contact {
       margin-top: 40px;
       background: var(--card-light);
       border-radius: 14px;
-      padding: 20px;
+      padding: 25px;
       border: 1px solid #e5e7eb;
     }
 
@@ -110,47 +196,125 @@
       border-color: #30363d;
     }
 
-    .contact h2 {
-      margin-bottom: 10px;
+    .contact p {
+      margin: 8px 0;
+      font-size: 1rem;
     }
 
-    .contact p {
-      margin: 6px 0;
-      font-size: 0.95rem;
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: gray;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
   <button class="theme-toggle" onclick="toggleTheme()">☀️ / 🌙</button>
-  <div class="container">
-    <h1>Linux Enwrfah (SignKrox)</h1>
-    <p>🎥 Content Creator | 📱 Influencer | 🌍 Across All Platforms</p>
 
-    <div class="links">
-      <a href="#" target="_blank" class="social">🎵 TikTok — @yourname</a>
-      <a href="#" target="_blank" class="social">📸 Instagram — @yourname</a>
-      <a href="#" target="_blank" class="social">🐦 X (Twitter) — @yourname</a>
-      <a href="#" target="_blank" class="social">📘 Facebook — @yourname</a>
-      <a href="#" target="_blank" class="social">▶️ YouTube — @yourchannel</a>
+  <header>
+    <h1>Linus Enwefah (SignKrox)</h1>
+    <p>🎤 Musician | 🎭 Comedian | 🎬 Entertainer</p>
+  </header>
+
+  <section class="section about">
+    <h2>About Me</h2>
+    <p>
+      I’m <b>Linus Enwefah</b>, known as <b>SignKrox</b> — a creative artist blending rhythm and laughter.
+      From soul-stirring music to hilarious skits, I’m passionate about entertaining and inspiring the world.
+      Welcome to my creative universe where sound meets humor.
+    </p>
+  </section>
+
+  <section class="section music">
+    <h2>🎵 Music Projects</h2>
+    <div class="card-grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1485579149621-3123dd979885?auto=format&fit=crop&w=800&q=80" alt="Music Project 1" />
+        <div class="card-content">
+          <h3>Vibes & Energy</h3>
+          <p>A fusion of Afrobeat and street soul, bringing rhythm to the city lights.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2?auto=format&fit=crop&w=800&q=80" alt="Music Project 2" />
+        <div class="card-content">
+          <h3>Street Anthem</h3>
+          <p>A powerful street-inspired anthem celebrating hustle and passion.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&w=800&q=80" alt="Music Project 3" />
+        <div class="card-content">
+          <h3>Dream Chaser</h3>
+          <p>A deep lyrical journey of ambition, struggle, and success.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <div class="contact">
-      <h2>Contact Me</h2>
-      <p>📧 Email: <b>linuxmattew2@gmail.com</b></p>
-      <p>📞 Phone: <b>+2348237050893</b></p>
-      <p>💬 WhatsApp: <b>+23437050893</b></p>
+  <section class="section comedy">
+    <h2>😂 Comedy Highlights</h2>
+    <div class="card-grid">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1514311548104-ae305aac4688?auto=format&fit=crop&w=800&q=80" alt="Comedy 1" />
+        <div class="card-content">
+          <h3>The Neighbor Joke</h3>
+          <p>SignKrox brings laughter to everyday moments with classic Naija humor.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=800&q=80" alt="Comedy 2" />
+        <div class="card-content">
+          <h3>Laugh Therapy</h3>
+          <p>A funny skit reminding everyone that joy is the best medicine.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" alt="Comedy 3" />
+        <div class="card-content">
+          <h3>Funny Life Episode</h3>
+          <p>Relatable comedy scenes inspired by true Nigerian street life.</p>
+        </div>
+      </div>
     </div>
+  </section>
 
-    <footer>
-      © <span id="year"></span> SignKrox. All Rights Reserved.
-    </footer>
-  </div>
+  <section class="section socials">
+    <h2>🌍 Connect With Me</h2>
+    <div class="social-links">
+      <a href="#" class="social">🎵 TikTok — @signkrox</a>
+      <a href="#" class="social">📸 Instagram — @signkrox</a>
+      <a href="#" class="social">🐦 X (Twitter) — @signkrox</a>
+      <a href="#" class="social">📘 Facebook — @signkrox</a>
+      <a href="#" class="social">▶️ YouTube — @signkrox</a>
+    </div>
+  </section>
+
+  <section class="section contact">
+    <h2>📞 Contact Me</h2>
+    <p>📧 Email: <b>linusmatew2@gmail.com</b></p>
+    <p>📱 Phone: <b>+2348237050893</b></p>
+    <p>💬 WhatsApp: <b>+23437050893</b></p>
+  </section>
+
+  <footer>
+    © <span id="year"></span> SignKrox. All Rights Reserved.
+  </footer>
 
   <script>
     function toggleTheme() {
       document.body.classList.toggle("dark");
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
     }
     document.getElementById("year").textContent = new Date().getFullYear();
+    if (localStorage.getItem('theme') === 'dark') {
+      document.body.classList.add('dark');
+    }
   </script>
 </body>
 </html>
