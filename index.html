@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SignKrox | Linux Enwefah Portfolio</title>
+  <style>
+    :root {
+      --bg-light: #f8f9fc;
+      --text-light: #1a1a1a;
+      --card-light: #ffffff;
+      --bg-dark: #0d1117;
+      --text-dark: #e6edf3;
+      --card-dark: #161b22;
+      --accent: #3b82f6;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: all 0.3s ease;
+    }
+
+    body.dark {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: gray;
+      margin-bottom: 40px;
+    }
+
+    .links {
+      display: grid;
+      gap: 15px;
+    }
+
+    a.social {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--card-light);
+      color: var(--text-light);
+      border-radius: 12px;
+      padding: 14px;
+      font-weight: 600;
+      transition: all 0.25s ease;
+      border: 1px solid #e5e7eb;
+    }
+
+    body.dark a.social {
+      background: var(--card-dark);
+      color: var(--text-dark);
+      border-color: #30363d;
+    }
+
+    a.social:hover {
+      background-color: var(--accent);
+      color: #fff;
+      transform: scale(1.02);
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: gray;
+    }
+
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .contact {
+      margin-top: 40px;
+      background: var(--card-light);
+      border-radius: 14px;
+      padding: 20px;
+      border: 1px solid #e5e7eb;
+    }
+
+    body.dark .contact {
+      background: var(--card-dark);
+      border-color: #30363d;
+    }
+
+    .contact h2 {
+      margin-bottom: 10px;
+    }
+
+    .contact p {
+      margin: 6px 0;
+      font-size: 0.95rem;
+    }
+  </style>
+</head>
+<body>
+  <button class="theme-toggle" onclick="toggleTheme()">☀️ / 🌙</button>
+  <div class="container">
+    <h1>Linux Enwrfah (SignKrox)</h1>
+    <p>🎥 Content Creator | 📱 Influencer | 🌍 Across All Platforms</p>
+
+    <div class="links">
+      <a href="#" target="_blank" class="social">🎵 TikTok — @yourname</a>
+      <a href="#" target="_blank" class="social">📸 Instagram — @yourname</a>
+      <a href="#" target="_blank" class="social">🐦 X (Twitter) — @yourname</a>
+      <a href="#" target="_blank" class="social">📘 Facebook — @yourname</a>
+      <a href="#" target="_blank" class="social">▶️ YouTube — @yourchannel</a>
+    </div>
+
+    <div class="contact">
+      <h2>Contact Me</h2>
+      <p>📧 Email: <b>linuxmattew2@gmail.com</b></p>
+      <p>📞 Phone: <b>+2348237050893</b></p>
+      <p>💬 WhatsApp: <b>+23437050893</b></p>
+    </div>
+
+    <footer>
+      © <span id="year"></span> SignKrox. All Rights Reserved.
+    </footer>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      document.body.classList.toggle("dark");
+    }
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
